@@ -1,0 +1,21 @@
+# Composer
+/vendor/
+
+# Sistema
+/.env
+/.idea
+/.vscode
+
+# Cache e logs
+*.log
+cache/
+logs/
+
+# Arquivos temporários
+*.bak
+*.tmp
+*.swp
+
+# Sistema operacional
+.DS_Store
+Thumbs.db
