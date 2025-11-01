@@ -1,0 +1,35 @@
+<?php
+
+namespace App\config;
+
+use PDO;
+use PDOException;
+
+class Database {
+    private $host = 'localhost';
+    private $db_name = 'controle_gastos';
+    private $username = 'root';
+    private $password = '';
+    private $conn;
+
+    private function connect() {
+        $this->conn = null;
+        try {
+            $this->conn = new PDO (
+                "mysql:host={$this->host};dbname={$this->db_name};charset=utf8mb4",
+                $this->username,
+                $this->password
+
+            );
+            $this->conn->setAttribute(PDO::ATTR_ERRMODE, PDO::ERRMODE_EXCEPTION);
+
+        } catch (PDOException $e) {
+            die(json_encode(["error" => "Erro na conexão com o banco de dados"]));
+        }
+
+        return $this->conn;
+
+    }
+
+
+}
