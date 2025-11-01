@@ -8,11 +8,11 @@ use PDOException;
 class Database {
     private $host = 'localhost';
     private $db_name = 'controle_gastos';
-    private $username = 'root';
-    private $password = '';
+    private $username = 'phpuser';
+    private $password = 'senha123';
     private $conn;
 
-    private function connect() {
+    public function connect() {
         $this->conn = null;
         try {
             $this->conn = new PDO (
