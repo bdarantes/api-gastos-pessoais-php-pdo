@@ -4,11 +4,33 @@ require_once __DIR__ .'/../vendor/autoload.php';
 
 use App\config\Database;
 
+
 header('Content-Type: application/json; charset=utf-8');
 
-require_once __DIR__ . '/../src/routes/userRoutes.php';
+$uri = parse_url($_SERVER['REQUEST_URI'], PHP_URL_PATH);
+
+
+
 
 $db = new Database();
 $conn = $db->connect();
 
-echo json_encode(["status" => "Conexão com banco OK!"]);
+switch ($uri) {
+    case '/':
+        echo json_encode(["status" => "API PHP funcionando e conectada ao banco"]);
+        break;
+
+    case '/register':
+        require_once __DIR__ . '/../src/routes/userRoutes.php';
+        break;
+
+    case '/login':
+        require __DIR__ . '/../src/routes/login.php';
+        break;
+
+    default:
+    http_response_code(404);
+    echo json_encode(["error" => "Rota não encontrada"]);
+    break;
+
+}
