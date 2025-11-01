@@ -6,6 +6,8 @@ use App\config\Database;
 
 header('Content-Type: application/json; charset=utf-8');
 
+require_once __DIR__ . '/../src/routes/userRoutes.php';
+
 $db = new Database();
 $conn = $db->connect();
 
