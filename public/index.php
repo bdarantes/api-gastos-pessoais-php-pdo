@@ -28,9 +28,14 @@ switch ($uri) {
         require __DIR__ . '/../src/routes/login.php';
         break;
 
+    case '/expenses':
+        require __DIR__ . '/../src/routes/expenses.php';
+        break;
+
+
     default:
-    http_response_code(404);
-    echo json_encode(["error" => "Rota não encontrada"]);
-    break;
+        http_response_code(404);
+        echo json_encode(["error" => "Rota não encontrada"]);
+        break;
 
 }
